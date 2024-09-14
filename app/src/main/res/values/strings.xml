@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">QuotesApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="inspiration">Inspiration</string>
+    <string name="success_is">Success is not final, failure is not total. It is the courage to continue that counts.</string>
+    <string name="category">Category</string>
+    <string name="select_the_area_of_most_suitable_quotes">Select the area of most suitable quotes</string>
+</resources>

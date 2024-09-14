@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/inspiration"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintBottom_toTopOf="@id/roundedImageView"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:id="@+id/txtQuotesHeading"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/roundedImageView"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:src="@drawable/wallpaper"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@id/txtQuotesHeading"
+        app:layout_constraintStart_toStartOf="@id/txtQuotesHeading"
+        app:layout_constraintEnd_toEndOf="@id/txtQuotesHeading"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:shapeAppearanceOverlay="@style/RoundedImageViewStyle"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
