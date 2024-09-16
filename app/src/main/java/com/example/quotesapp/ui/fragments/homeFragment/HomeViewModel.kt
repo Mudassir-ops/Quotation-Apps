@@ -1,11 +1,13 @@
 package com.example.quotesapp.ui.fragments.homeFragment
 
-import QuotesData
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.quotesapp.ui.json.QuotesData
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -14,17 +16,22 @@ class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository
 ) : ViewModel() {
 
-    private val _quotesData = MutableLiveData<QuotesData>()
-    val quotesData: LiveData<QuotesData> get() = _quotesData
+    private val ioDispatcher = IO
+
+    private val _quotesData = MutableStateFlow<QuotesData?>(null)
+    val quotesData: StateFlow<QuotesData?> get() = _quotesData
 
     init {
-        fetchQuotes()
+        fetchQuotes(ioDispatcher)
     }
 
-    private fun fetchQuotes() {
-        viewModelScope.launch {
-            val data = homeRepository.fetchQuotesData()
-            data?.let { _quotesData.postValue(it) }
+    private fun fetchQuotes(coroutineDispatcher: CoroutineDispatcher?) {
+        viewModelScope.launch(coroutineDispatcher ?: return) {
+            val data = homeRepository.fetchQuotesData(coroutineDispatcher)
+            data?.let { _quotesData.value = (it) }
+
+
         }
     }
+
 }

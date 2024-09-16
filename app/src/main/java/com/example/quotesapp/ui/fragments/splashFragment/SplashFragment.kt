@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.quotesapp.R
 import com.example.quotesapp.databinding.FragmentSplashBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SplashFragment : Fragment() {
     private var _binding : FragmentSplashBinding?=null
@@ -23,10 +26,13 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding?.apply {
-            txtSplash.setOnClickListener {
-                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+            lifecycleScope.launch {
+                delay(3000)
+                    findNavController().navigate(R.id.action_splashFragment_to_mainFragment)
             }
+
         }
 
     }

@@ -18,13 +18,24 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icFavourite"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="@dimen/_4sdp"
+                android:layout_margin="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_unfill_favourite"
+                />
             
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtQuotes"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:paddingHorizontal="@dimen/_10sdp"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/icFavourite"
                 android:paddingVertical="@dimen/_10sdp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:alpha="0.6"
@@ -58,9 +69,20 @@
                 android:tint="@color/black"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:layout_marginHorizontal="@dimen/_10sdp"
-                app:layout_constraintStart_toEndOf="@id/icCopy"
+                app:layout_constraintStart_toEndOf="@id/icVoice"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:srcCompat="@android:drawable/ic_menu_share"/>
+                app:srcCompat="@drawable/ic_share"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icVoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/icShare"
+                app:layout_constraintBottom_toBottomOf="@id/icShare"
+                app:layout_constraintEnd_toStartOf="@id/icShare"
+                android:tint="@color/black"
+                app:layout_constraintStart_toEndOf="@id/icCopy"
+                app:srcCompat="@drawable/ic_volume"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/icCopy"
@@ -68,22 +90,11 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="@id/icShare"
                 app:layout_constraintBottom_toBottomOf="@id/icShare"
-                app:layout_constraintEnd_toStartOf="@id/icShare"
-                android:tint="@color/black"
-                app:layout_constraintStart_toEndOf="@id/icSave"
-                app:srcCompat="@android:drawable/ic_menu_week"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icSave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="@id/icShare"
-                app:layout_constraintBottom_toBottomOf="@id/icShare"
-                app:layout_constraintEnd_toStartOf="@id/icCopy"
+                app:layout_constraintEnd_toStartOf="@id/icVoice"
                 android:tint="@color/black"
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 app:layout_constraintStart_toEndOf="@id/emptyView"
-                app:srcCompat="@android:drawable/ic_menu_save"/>
+                app:srcCompat="@drawable/ic_copy"/>
 
             <View
                 android:id="@+id/emptyView"
@@ -92,7 +103,7 @@
                 app:layout_constraintTop_toTopOf="@id/icShare"
                 app:layout_constraintBottom_toBottomOf="@id/icShare"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/icSave"/>
+                app:layout_constraintEnd_toStartOf="@id/icCopy"/>
             
             
         </androidx.constraintlayout.widget.ConstraintLayout>

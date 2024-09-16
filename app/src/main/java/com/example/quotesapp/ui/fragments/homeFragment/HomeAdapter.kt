@@ -1,16 +1,20 @@
 package com.example.quotesapp.ui.fragments.homeFragment
 
-import Quote
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quotesapp.R
 import com.example.quotesapp.databinding.HomeItemBinding
-import com.example.quotesapp.ui.fragments.quotesFragment.QuotesAdapter
+import com.example.quotesapp.ui.json.Categories
+import com.example.quotesapp.ui.json.Quotes
 
-class HomeAdapter(private var quotes: List<Quote>):RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+class HomeAdapter(private var quotes: ArrayList<Categories>,
+                  private val callback:(ArrayList<Quotes>)->Unit) :
+    RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
-    fun submitList(list: List<Quote>) {
+    @SuppressLint("NotifyDataSetChanged")
+    fun submitList(list: ArrayList<Categories>) {
         quotes = list
         notifyDataSetChanged()
     }
@@ -25,11 +29,14 @@ class HomeAdapter(private var quotes: List<Quote>):RecyclerView.Adapter<HomeAdap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val dataModel = quotes[position]
-        holder.binding.txtQuotesHeading.text = dataModel.text
+        holder.binding.txtQuotesHeading.text = dataModel.categoryName.toString()
         holder.binding.roundedImageView.setImageResource(R.drawable.wallpaper)
+        holder.itemView.setOnClickListener {
+            dataModel.quotes?.let { it1 -> callback.invoke(it1) }
+        }
 
 
     }
 
-    class ViewHolder(val binding: HomeItemBinding):RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: HomeItemBinding) : RecyclerView.ViewHolder(binding.root)
 }

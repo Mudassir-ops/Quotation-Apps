@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.settingFragment.SettingFragment">
+
+
+    <View
+        android:id="@+id/topView"
+        android:layout_width="wrap_content"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingHorizontal="@dimen/_14sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icBack"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toTopOf="@id/topView"
+        android:layout_marginStart="@dimen/_14sdp"
+        android:padding="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="@id/topView"
+        app:layout_constraintStart_toStartOf="@id/topView"
+        android:tint="@color/black"
+        app:srcCompat="@drawable/ic_back"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtSetting"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/topView"
+        app:layout_constraintBottom_toBottomOf="@id/topView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/topView"
+        android:textSize="@dimen/_16sdp"
+        android:text="@string/setting"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/icPrivacyPolicy"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/topView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_rounded"
+        android:drawableStart="@drawable/ic_privacy"
+        android:text="@string/privacy_policy"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="0dp"
+        android:textColor="@android:color/holo_blue_dark"
+        app:drawableTint="@android:color/holo_blue_dark"
+        android:textSize="@dimen/_15sdp"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/_10sdp"
+        app:layout_constraintWidth_percent="0.85"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/icShare"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/icPrivacyPolicy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_rounded"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:drawableStart="@drawable/ic_share"
+        android:text="@string/share_app"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="0dp"
+        android:textColor="@android:color/holo_blue_dark"
+        app:drawableTint="@android:color/holo_blue_dark"
+        android:textSize="@dimen/_15sdp"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/_10sdp"
+        app:layout_constraintWidth_percent="0.85"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/icRateUs"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/icShare"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_rounded"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:drawableStart="@drawable/ic_star"
+        android:text="@string/rate_us"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="0dp"
+        android:textColor="@android:color/holo_blue_dark"
+        app:drawableTint="@android:color/holo_blue_dark"
+        android:textSize="@dimen/_15sdp"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/_10sdp"
+        app:layout_constraintWidth_percent="0.85"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/icMoreApps"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/icRateUs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_rounded"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:drawableStart="@drawable/ic_more_apps"
+        android:text="@string/more_app"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="0dp"
+        android:textColor="@android:color/holo_blue_dark"
+        app:drawableTint="@android:color/holo_blue_dark"
+        android:textSize="@dimen/_15sdp"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/_10sdp"
+        app:layout_constraintWidth_percent="0.85"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

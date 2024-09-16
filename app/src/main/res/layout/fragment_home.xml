@@ -11,14 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="matrix"
-        app:srcCompat="@drawable/main_bg" />
+        app:srcCompat="@drawable/bg_main_menu" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtCategory"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
         android:text="@string/category"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="@dimen/_15sdp"
         android:textColor="@color/white"
         android:textSize="@dimen/_25sdp"
@@ -30,29 +31,45 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtDescription"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
         android:fontFamily="monospace"
         android:text="@string/select_the_area_of_most_suitable_quotes"
         android:layout_marginHorizontal="@dimen/_15sdp"
         android:textColor="@color/white"
         android:alpha="0.6"
         android:singleLine="true"
+        app:layout_constraintBottom_toTopOf="@id/horizontalRecyclerview"
         android:textSize="@dimen/_11sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtCategory"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/horizontalRecyclerview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/horizontal_item"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/quotesRecyclerView"
+        app:layout_constraintTop_toBottomOf="@id/txtDescription"
+        app:layout_constraintStart_toStartOf="@id/txtDescription"
+        app:layout_constraintEnd_toEndOf="@id/txtDescription"/>
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/quotesRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/txtDescription"
+        app:layout_constraintTop_toBottomOf="@id/horizontalRecyclerview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/home_item"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="@dimen/_10sdp"/>
+        android:layout_marginHorizontal="@dimen/_10sdp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
