@@ -12,13 +12,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.quotesapp.ui.utils.KEY_QUOTES
 import com.example.quotesapp.R
 import com.example.quotesapp.databinding.FragmentHomeBinding
 import com.example.quotesapp.ui.json.Categories
 import com.example.quotesapp.ui.utils.KEY_IMAGE_RESOURCE
+import com.example.quotesapp.ui.utils.KEY_QUOTES
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -31,18 +30,14 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("fragmentLifecycle", "onCreate: onCreate")
 
         homeAdapter = HomeAdapter(arrayListOf(),
             callback = {quotesList, imageResource ->
-                Log.d("fragmentLifecycle", "Callback triggered with data: $quotesList")
-                Log.d("fragmentLifecycle", "Current destination ID: ${findNavController().currentDestination?.id}")
 
                 if (findNavController().currentDestination?.id == R.id.mainFragment) {
                     val bundle = Bundle()
                     bundle.putParcelableArrayList(KEY_QUOTES, quotesList)
                     bundle.putInt(KEY_IMAGE_RESOURCE,imageResource)
-                    Log.e("image", "onCreate: image $imageResource", )
 
                     findNavController().navigate(R.id.quotesFragment, bundle)
                 }
@@ -54,8 +49,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("fragmentLifecycle", "onViewCreated: onCreateView")
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding?.root
     }
@@ -63,7 +56,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observingQuotes()
-        Log.d("fragmentLifecycle", "onViewCreated: onViewCreated")
         setupRecyclerView()
 
     }

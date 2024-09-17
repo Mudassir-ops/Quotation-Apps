@@ -7,9 +7,6 @@
     android:background="@drawable/splash_image_quotes"
     tools:context=".ui.fragments.splashFragment.SplashFragment">
 
-
-
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/imgSplash"
         android:layout_width="0dp"

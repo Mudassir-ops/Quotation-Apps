@@ -1,6 +1,5 @@
 package com.example.quotesapp.ui.fragments.favouriteFragment
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

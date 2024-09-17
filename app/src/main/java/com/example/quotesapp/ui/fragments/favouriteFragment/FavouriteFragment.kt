@@ -1,13 +1,12 @@
 package com.example.quotesapp.ui.fragments.favouriteFragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.quotesapp.R
 import com.example.quotesapp.data.QuotesDao
 import com.example.quotesapp.databinding.FragmentFavouriteBinding
 import dagger.hilt.android.AndroidEntryPoint

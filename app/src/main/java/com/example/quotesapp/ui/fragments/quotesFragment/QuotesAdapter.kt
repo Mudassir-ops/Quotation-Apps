@@ -60,7 +60,6 @@ class QuotesAdapter(
 
         fun bind(quotes: Quotes, context: Context) {
 
-            // Copy to clipboard
             binding.icCopy.setOnClickListener {
                 val clipboardManager =
                     context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -69,7 +68,6 @@ class QuotesAdapter(
                 Toast.makeText(context, "Text copied!", Toast.LENGTH_SHORT).show()
             }
 
-            // Share text
             binding.icShare.setOnClickListener {
                 val shareIntent = Intent(Intent.ACTION_SEND)
                 shareIntent.type = "text/plain"
@@ -77,12 +75,9 @@ class QuotesAdapter(
                 context.startActivity(Intent.createChooser(shareIntent, "Share via"))
             }
 
-            // Text-to-speech
             binding.icVoice.setOnClickListener {
-                // Stop any existing speech
                 adapter.stopCurrentSpeech()
 
-                // Initialize new TextToSpeech instance
                 adapter.textToSpeech = TextToSpeech(context) { status ->
                     if (status != TextToSpeech.ERROR) {
                         adapter.textToSpeech?.language = Locale.US
@@ -99,14 +94,12 @@ class QuotesAdapter(
     }
 
     fun stopCurrentSpeech() {
-        // Cancel the current TextToSpeech if it's speaking
         textToSpeech?.stop()
         textToSpeech?.shutdown()
         textToSpeech = null
     }
 
     private fun saveQuoteToDatabase(quote: Quotes) {
-        Log.d("QuotesAdapter", "Saving quote: ${quote.text} by ${quote.author}")
         CoroutineScope(Dispatchers.IO).launch {
             val quoteEntity = QuotesEntity(
                 quotesText = quote.text?:return@launch,

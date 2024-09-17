@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quotesapp.data.QuotesEntity
 import com.example.quotesapp.databinding.FavouriteItemBinding
-import com.example.quotesapp.databinding.QuotesItemBinding
-import com.example.quotesapp.ui.fragments.quotesFragment.QuotesAdapter.ViewHolder
 
 class FavouriteAdapter(private val favList: List<QuotesEntity>) :
     RecyclerView.Adapter<FavouriteAdapter.ViewHolder>() {

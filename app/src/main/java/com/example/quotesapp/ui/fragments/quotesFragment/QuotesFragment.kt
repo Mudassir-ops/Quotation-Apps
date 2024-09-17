@@ -1,7 +1,6 @@
 package com.example.quotesapp.ui.fragments.quotesFragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,13 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quotesapp.data.QuotesDao
-import com.example.quotesapp.ui.utils.KEY_QUOTES
 import com.example.quotesapp.databinding.FragmentQuotesBinding
-import com.example.quotesapp.ui.utils.parcelableArrayList
 import com.example.quotesapp.ui.json.Quotes
 import com.example.quotesapp.ui.utils.KEY_IMAGE_RESOURCE
+import com.example.quotesapp.ui.utils.KEY_QUOTES
+import com.example.quotesapp.ui.utils.parcelableArrayList
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
 @AndroidEntryPoint
 class QuotesFragment : Fragment() {
     private var _binding: FragmentQuotesBinding? = null

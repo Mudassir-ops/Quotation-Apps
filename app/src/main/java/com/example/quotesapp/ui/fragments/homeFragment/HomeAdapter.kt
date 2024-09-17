@@ -4,13 +4,13 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.quotesapp.R
 import com.example.quotesapp.databinding.HomeItemBinding
 import com.example.quotesapp.ui.json.Categories
 import com.example.quotesapp.ui.json.Quotes
 
-class HomeAdapter(private var quotes: ArrayList<Categories>,
-                  private val callback: (ArrayList<Quotes>, Int) -> Unit
+class HomeAdapter(
+    private var quotes: ArrayList<Categories>,
+    private val callback: (ArrayList<Quotes>, Int) -> Unit
 ) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
@@ -36,11 +36,6 @@ class HomeAdapter(private var quotes: ArrayList<Categories>,
             dataModel.quotes?.let { it1 -> callback.invoke(it1, dataModel.imageResource) }
         }
 
-        @SuppressLint("NotifyDataSetChanged")
-        fun submitList(list: ArrayList<Categories>) {
-            quotes = list
-            notifyDataSetChanged()
-        }
 
     }
 
