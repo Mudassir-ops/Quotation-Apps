@@ -25,7 +25,7 @@
         android:padding="@dimen/_8sdp"
         app:layout_constraintBottom_toBottomOf="@id/topView"
         app:layout_constraintStart_toStartOf="@id/topView"
-        android:tint="@color/black"
+        android:tint="@color/white"
         app:srcCompat="@drawable/ic_back"/>
 
     <androidx.appcompat.widget.AppCompatTextView

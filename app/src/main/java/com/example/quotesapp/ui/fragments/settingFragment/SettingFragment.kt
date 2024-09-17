@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.quotesapp.R
+import com.example.quotesapp.RateUsDialog
 import com.example.quotesapp.databinding.FragmentSettingBinding
 import com.example.quotesapp.ui.utils.moreApps
 import com.example.quotesapp.ui.utils.privacyPolicyUrl
@@ -17,9 +18,11 @@ import com.example.quotesapp.ui.utils.shareApp
 class SettingFragment : Fragment() {
    private var _binding : FragmentSettingBinding?=null
     private val binding get() = _binding
+    private var rateUsDialog:RateUsDialog?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        rateUsDialog = RateUsDialog(activity?:return)
 
     }
 
@@ -44,7 +47,7 @@ class SettingFragment : Fragment() {
                 }
             }
             icShare.setOnClickListener { activity?.shareApp() }
-            icRateUs.setOnClickListener {  activity?.rateUs()}
+            icRateUs.setOnClickListener { rateUsDialog?.show()}
             icMoreApps.setOnClickListener { activity?.moreApps() }
             icPrivacyPolicy.setOnClickListener { activity?.privacyPolicyUrl() }
         }

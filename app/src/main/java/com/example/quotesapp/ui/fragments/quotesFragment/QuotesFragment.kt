@@ -21,7 +21,7 @@ class QuotesFragment : Fragment() {
     private var _binding: FragmentQuotesBinding? = null
     private val binding get() = _binding
     private var quotesList: ArrayList<Quotes>? = null
-    private  var quotesAdapter: QuotesAdapter?=null
+    private  var quotesAdapter:  QuotesAdapter?=null
     @Inject
     lateinit var quotesDao: QuotesDao
 

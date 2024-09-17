@@ -1,5 +1,6 @@
 package com.example.quotesapp.ui.fragments.quotesFragment
 
+import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -11,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.quotesapp.R
 import com.example.quotesapp.data.QuotesDao
 import com.example.quotesapp.data.QuotesEntity
 import com.example.quotesapp.databinding.QuotesItemBinding
@@ -43,13 +45,12 @@ class QuotesAdapter(
         holder.binding.txtQuotesAuthor.text = dataModel.author
         holder.bind(dataModel, context)
         holder.binding.icFavourite.setOnClickListener {
-            saveQuoteToDatabase(dataModel)
+            saveQuoteToDatabase(dataModel, holder)
         }
         CoroutineScope(Dispatchers.Main).launch {
             val isFavorite = quotesDao.isFavorite(dataModel.text ?: "", dataModel.author ?: "")
-            holder.binding.icFavourite.setColorFilter(
-                if (isFavorite) Color.RED else Color.GRAY,
-                android.graphics.PorterDuff.Mode.SRC_IN
+            holder.binding.icFavourite.setImageResource(
+                if (isFavorite) R.drawable.ic_red_fav else R.drawable.ic_favourite
             )
         }
     }
@@ -99,7 +100,8 @@ class QuotesAdapter(
         textToSpeech = null
     }
 
-    private fun saveQuoteToDatabase(quote: Quotes) {
+    @SuppressLint("NotifyDataSetChanged")
+    private fun saveQuoteToDatabase(quote: Quotes, holder: ViewHolder) {
         CoroutineScope(Dispatchers.IO).launch {
             val quoteEntity = QuotesEntity(
                 quotesText = quote.text?:return@launch,
@@ -109,6 +111,15 @@ class QuotesAdapter(
 
 
             quotesDao.insertQuotesData(quoteEntity)
+            CoroutineScope(Dispatchers.Main).launch {
+                val isFavorite = quotesDao.isFavorite(quote.text ?: "", quote.author ?: "")
+                holder.binding.icFavourite.setImageResource(
+                    if (isFavorite) R.drawable.ic_red_fav else R.drawable.ic_favourite
+                )
+                // Notify the adapter to refresh
+                notifyDataSetChanged()
+            }
+
 
         }
     }
