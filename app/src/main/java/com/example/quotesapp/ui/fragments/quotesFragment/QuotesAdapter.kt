@@ -4,6 +4,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,14 +14,18 @@ import com.example.quotesapp.databinding.QuotesItemBinding
 import com.example.quotesapp.ui.json.Quotes
 import java.util.Locale
 
-class QuotesAdapter(private var quotes: ArrayList<Quotes>,  val context: Context):RecyclerView.Adapter<QuotesAdapter.ViewHolder>() {
+class QuotesAdapter(
+    var quotes: ArrayList<Quotes>,
+    val context: Context,
+) :
+    RecyclerView.Adapter<QuotesAdapter.ViewHolder>() {
 
     private var textToSpeech: TextToSpeech? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = QuotesItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding,this)
+        return ViewHolder(binding, this)
     }
 
     override fun getItemCount(): Int = quotes.size
@@ -29,18 +34,19 @@ class QuotesAdapter(private var quotes: ArrayList<Quotes>,  val context: Context
         val dataModel = quotes[position]
         holder.binding.txtQuotes.text = dataModel.text
         holder.binding.txtQuotesAuthor.text = dataModel.author
-        holder.bind(dataModel,context)
-
+        holder.bind(dataModel, context)
     }
 
 
-    class ViewHolder(val binding: QuotesItemBinding, private val adapter: QuotesAdapter): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(val binding: QuotesItemBinding, private val adapter: QuotesAdapter) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(quotes: Quotes, context: Context) {
 
             // Copy to clipboard
             binding.icCopy.setOnClickListener {
-                val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clipboardManager =
+                    context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                 val clip = ClipData.newPlainText("Quote", quotes.text)
                 clipboardManager.setPrimaryClip(clip)
                 Toast.makeText(context, "Text copied!", Toast.LENGTH_SHORT).show()
@@ -63,7 +69,12 @@ class QuotesAdapter(private var quotes: ArrayList<Quotes>,  val context: Context
                 adapter.textToSpeech = TextToSpeech(context) { status ->
                     if (status != TextToSpeech.ERROR) {
                         adapter.textToSpeech?.language = Locale.US
-                        adapter.textToSpeech?.speak(quotes.text, TextToSpeech.QUEUE_FLUSH, null, null)
+                        adapter.textToSpeech?.speak(
+                            quotes.text,
+                            TextToSpeech.QUEUE_FLUSH,
+                            null,
+                            null
+                        )
                     }
                 }
             }

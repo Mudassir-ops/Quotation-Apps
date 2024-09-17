@@ -10,8 +10,8 @@ import com.example.quotesapp.ui.json.Categories
 import com.example.quotesapp.ui.json.Quotes
 
 class HomeAdapter(private var quotes: ArrayList<Categories>,
-                  private val callback:(ArrayList<Quotes>)->Unit) :
-    RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+                  private val callback: (ArrayList<Quotes>, Int) -> Unit
+) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun submitList(list: ArrayList<Categories>) {
@@ -30,13 +30,21 @@ class HomeAdapter(private var quotes: ArrayList<Categories>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val dataModel = quotes[position]
         holder.binding.txtQuotesHeading.text = dataModel.categoryName.toString()
-        holder.binding.roundedImageView.setImageResource(R.drawable.wallpaper)
+        holder.binding.roundedImageView.setImageResource(dataModel.imageResource)
+
         holder.itemView.setOnClickListener {
-            dataModel.quotes?.let { it1 -> callback.invoke(it1) }
+            dataModel.quotes?.let { it1 -> callback.invoke(it1, dataModel.imageResource) }
         }
 
+        @SuppressLint("NotifyDataSetChanged")
+        fun submitList(list: ArrayList<Categories>) {
+            quotes = list
+            notifyDataSetChanged()
+        }
 
     }
 
     class ViewHolder(val binding: HomeItemBinding) : RecyclerView.ViewHolder(binding.root)
+
+
 }

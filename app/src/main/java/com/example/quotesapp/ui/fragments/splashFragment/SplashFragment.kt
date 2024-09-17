@@ -29,7 +29,7 @@ class SplashFragment : Fragment() {
 
         binding?.apply {
             lifecycleScope.launch {
-                delay(3000)
+                delay(1000)
                     findNavController().navigate(R.id.action_splashFragment_to_mainFragment)
             }
 

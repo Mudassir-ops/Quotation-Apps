@@ -5,4 +5,10 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>
+
+
+    <style name="BottomNavigationTextStyle">
+        <item name="android:textSize">10sp</item> <!-- Reduce text size -->
+        <item name="android:textColor">@color/black</item> <!-- Adjust color if needed -->
+    </style>
 </resources>

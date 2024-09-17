@@ -1,26 +1,27 @@
 package com.example.quotesapp.ui.fragments.mainFragment
 
+import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.activity.addCallback
+import androidx.fragment.app.Fragment
 import com.example.quotesapp.R
 import com.example.quotesapp.databinding.FragmentMainBinding
 import com.example.quotesapp.ui.fragments.favouriteFragment.FavouriteFragment
 import com.example.quotesapp.ui.fragments.homeFragment.HomeFragment
-import com.example.quotesapp.ui.fragments.quotesFragment.QuotesFragment
 import com.example.quotesapp.ui.fragments.settingFragment.SettingFragment
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
     private var _binding:FragmentMainBinding?=null
     private val binding get() = _binding
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private var currentFragment: Fragment = HomeFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,11 +30,20 @@ class MainFragment : Fragment() {
         _binding = FragmentMainBinding.inflate(inflater,container,false)
         replaceFragment(HomeFragment())
 
+        setupCustomBottomNavigation()
+
+
         binding?.bottomNav?.setOnItemSelectedListener {
-            when(it.itemId) {
-                R.id.home_menu -> replaceFragment(HomeFragment())
-                R.id.favourite_menu -> replaceFragment(FavouriteFragment())
-                R.id.setting_menu -> replaceFragment(SettingFragment())
+            val fragment = when (it.itemId) {
+                R.id.home_menu -> HomeFragment()
+                R.id.favourite_menu -> FavouriteFragment()
+                R.id.setting_menu -> SettingFragment()
+                else -> null
+            }
+
+            if (fragment != null) {
+                replaceFragment(fragment)
+                currentFragment = fragment
             }
             true
         }
@@ -42,11 +52,31 @@ class MainFragment : Fragment() {
 
 
     private fun replaceFragment(fragment: Fragment){
-        val fragmentTransaction = fragmentManager?.beginTransaction()
-        fragmentTransaction?.replace(R.id.frameLayout, fragment)?.commit()
+        val fragmentTransaction = parentFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frameLayout, fragment).commit()
     }
 
+    override fun onResume() {
+        super.onResume()
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            if (currentFragment is HomeFragment) {
+                showExitDialog()
+            } else {
+                replaceFragment(HomeFragment())
+                currentFragment = HomeFragment()
+            }
+        }
+    }
 
+    private fun showExitDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Exit")
+            .setMessage("Are you sure you want to exit?")
+            .setPositiveButton("Yes") { _, _ -> requireActivity().finish() }
+            .setNegativeButton("No", null)
+            .show()
+    }
 
+ 
 
 }

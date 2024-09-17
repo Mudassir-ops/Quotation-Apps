@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quotesapp.ui.utils.KEY_QUOTES
 import com.example.quotesapp.databinding.FragmentQuotesBinding
 import com.example.quotesapp.ui.utils.parcelableArrayList
 import com.example.quotesapp.ui.json.Quotes
+import com.example.quotesapp.ui.utils.KEY_IMAGE_RESOURCE
 
 class QuotesFragment : Fragment() {
     private var _binding: FragmentQuotesBinding? = null
@@ -36,7 +38,13 @@ class QuotesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("QuotesFragment", "onViewCreated: quotesList $quotesList")
+        val imageResource = arguments?.getInt(KEY_IMAGE_RESOURCE)
+        imageResource?.let {
+            binding?.quotesImageView?.setImageResource(it)
+        }
+        binding?.icBack?.setOnClickListener {
+            findNavController().navigateUp()
+        }
         setupRecyclerView()
     }
 
@@ -51,6 +59,5 @@ class QuotesFragment : Fragment() {
             adapter = quotesAdapter
         }
     }
-
 
 }

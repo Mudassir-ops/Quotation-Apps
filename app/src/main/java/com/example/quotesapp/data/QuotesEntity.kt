@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class QuotesEntity(
     @PrimaryKey(autoGenerate = false)
     val quotesText:String = "",
-    val authorName :String = ""
+    val authorName :String = "",
+    val isFavourite: Boolean = false
 )

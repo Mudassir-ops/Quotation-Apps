@@ -33,6 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="@id/topView"
         app:layout_constraintBottom_toBottomOf="@id/topView"
         app:layout_constraintStart_toStartOf="parent"

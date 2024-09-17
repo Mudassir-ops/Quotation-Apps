@@ -10,8 +10,7 @@
         android:id="@+id/mainImg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="matrix"
-        app:srcCompat="@drawable/bg_main_menu" />
+        android:scaleType="matrix"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtCategory"

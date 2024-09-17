@@ -16,6 +16,7 @@ import com.example.quotesapp.ui.utils.KEY_QUOTES
 import com.example.quotesapp.R
 import com.example.quotesapp.databinding.FragmentHomeBinding
 import com.example.quotesapp.ui.json.Categories
+import com.example.quotesapp.ui.utils.KEY_IMAGE_RESOURCE
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -33,17 +34,20 @@ class HomeFragment : Fragment() {
         Log.d("fragmentLifecycle", "onCreate: onCreate")
 
         homeAdapter = HomeAdapter(arrayListOf(),
-            callback = {
-                Log.d("fragmentLifecycle", "Callback triggered with data: $it")
+            callback = {quotesList, imageResource ->
+                Log.d("fragmentLifecycle", "Callback triggered with data: $quotesList")
                 Log.d("fragmentLifecycle", "Current destination ID: ${findNavController().currentDestination?.id}")
 
-                if (findNavController().currentDestination?.id == R.id.homeFragment) {
+                if (findNavController().currentDestination?.id == R.id.mainFragment) {
                     val bundle = Bundle()
-                    bundle.putParcelableArrayList(KEY_QUOTES, it)
+                    bundle.putParcelableArrayList(KEY_QUOTES, quotesList)
+                    bundle.putInt(KEY_IMAGE_RESOURCE,imageResource)
+                    Log.e("image", "onCreate: image $imageResource", )
+
                     findNavController().navigate(R.id.quotesFragment, bundle)
                 }
             })
-        observingQuotes()
+
     }
 
     override fun onCreateView(
@@ -58,7 +62,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        observingQuotes()
         Log.d("fragmentLifecycle", "onViewCreated: onViewCreated")
         setupRecyclerView()
 
@@ -89,7 +93,31 @@ class HomeFragment : Fragment() {
     }
 
     private fun updateAdapterData(dataset: ArrayList<Categories>) {
+        dataset.forEach { category ->
+            category.imageResource = getCategoryImage(category.categoryName.toString())
+        }
         homeAdapter.submitList(dataset)
+    }
+
+    private fun getCategoryImage(categoryName: String): Int {
+        return when (categoryName) {
+            "Motivational Quotes" -> R.drawable.wallpaper
+            "Inspirational Quotes" -> R.drawable.splash_image_quotes
+            "Love Quotes" -> R.drawable.splash_image_two
+            "Friendship Quotes" -> R.drawable.wallpaper
+            "Success Quotes" -> R.drawable.splash_image_quotes
+            "Life Quotes" -> R.drawable.splash_image_two
+            "Happiness Quotes" -> R.drawable.wallpaper
+            "Leadership Quotes" -> R.drawable.splash_image_quotes
+            "Wisdom Quotes" -> R.drawable.splash_image_two
+            "Positive Thinking Quotes" -> R.drawable.wallpaper
+            "Courage Quotes" -> R.drawable.splash_image_quotes
+            "Family Quotes" -> R.drawable.splash_image_two
+            "Self Love Quotes" -> R.drawable.wallpaper
+            "Time Management Quotes" -> R.drawable.splash_image_quotes
+            "Gratitude Quotes" -> R.drawable.splash_image_two
+            else -> R.drawable.wallpaper
+        }
     }
 
 

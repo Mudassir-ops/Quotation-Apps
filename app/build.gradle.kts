@@ -11,7 +11,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.quotesapp"
+        applicationId = "com.etech.motivation"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -83,6 +83,10 @@ dependencies {
     //room database
     implementation(libs.room.runtime)
     kapt(libs.room.compiler)
+    implementation(libs.room.ktx)
+
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 
 }
 

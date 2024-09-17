@@ -8,7 +8,9 @@ import com.google.gson.annotations.SerializedName
 data class Quotes(
 
     @SerializedName("text") var text: String? = null,
-    @SerializedName("author") var author: String? = null
+    @SerializedName("author") var author: String? = null,
+    var isFavourite: Boolean = false
+
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
