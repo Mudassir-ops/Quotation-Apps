@@ -20,4 +20,6 @@
     <string name="privacy_policy_link" translatable="false">https://atonomushubofficial.blogspot.com/2024/09/quotes-app-privacy-policy.html</string>
     <string name="more_app_link" translatable="false">https://play.google.com/store/apps/dev?id=7068253360089619762</string>
     <string name="no_launcher">No Launcher</string>
+    <string name="winston_s_churchill">Winston S. Churchill</string>
+    <string name="no_favourite_list">No Favourite List</string>
 </resources>

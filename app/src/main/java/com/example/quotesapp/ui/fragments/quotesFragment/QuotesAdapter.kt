@@ -6,16 +6,23 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.quotesapp.data.QuotesDao
+import com.example.quotesapp.data.QuotesEntity
 import com.example.quotesapp.databinding.QuotesItemBinding
 import com.example.quotesapp.ui.json.Quotes
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 class QuotesAdapter(
     var quotes: ArrayList<Quotes>,
+    private val quotesDao: QuotesDao,
     val context: Context,
 ) :
     RecyclerView.Adapter<QuotesAdapter.ViewHolder>() {
@@ -35,6 +42,16 @@ class QuotesAdapter(
         holder.binding.txtQuotes.text = dataModel.text
         holder.binding.txtQuotesAuthor.text = dataModel.author
         holder.bind(dataModel, context)
+        holder.binding.icFavourite.setOnClickListener {
+            saveQuoteToDatabase(dataModel)
+        }
+        CoroutineScope(Dispatchers.Main).launch {
+            val isFavorite = quotesDao.isFavorite(dataModel.text ?: "", dataModel.author ?: "")
+            holder.binding.icFavourite.setColorFilter(
+                if (isFavorite) Color.RED else Color.GRAY,
+                android.graphics.PorterDuff.Mode.SRC_IN
+            )
+        }
     }
 
 
@@ -86,5 +103,20 @@ class QuotesAdapter(
         textToSpeech?.stop()
         textToSpeech?.shutdown()
         textToSpeech = null
+    }
+
+    private fun saveQuoteToDatabase(quote: Quotes) {
+        Log.d("QuotesAdapter", "Saving quote: ${quote.text} by ${quote.author}")
+        CoroutineScope(Dispatchers.IO).launch {
+            val quoteEntity = QuotesEntity(
+                quotesText = quote.text?:return@launch,
+                authorName = quote.author?: return@launch,
+                isFavourite = true
+            )
+
+
+            quotesDao.insertQuotesData(quoteEntity)
+
+        }
     }
 }
