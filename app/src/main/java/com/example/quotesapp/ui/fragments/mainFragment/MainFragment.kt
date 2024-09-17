@@ -30,9 +30,6 @@ class MainFragment : Fragment() {
         _binding = FragmentMainBinding.inflate(inflater,container,false)
         replaceFragment(HomeFragment())
 
-        setupCustomBottomNavigation()
-
-
         binding?.bottomNav?.setOnItemSelectedListener {
             val fragment = when (it.itemId) {
                 R.id.home_menu -> HomeFragment()
@@ -77,6 +74,5 @@ class MainFragment : Fragment() {
             .show()
     }
 
- 
 
 }
