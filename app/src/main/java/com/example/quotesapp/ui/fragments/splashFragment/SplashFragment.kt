@@ -27,14 +27,19 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         binding?.apply {
             lifecycleScope.launch {
                 delay(1000)
-                    findNavController().navigate(R.id.action_splashFragment_to_mainFragment)
+                findNavController().navigate(R.id.action_splashFragment_to_mainFragment)
             }
 
         }
-
     }
 
     override fun onDestroyView() {

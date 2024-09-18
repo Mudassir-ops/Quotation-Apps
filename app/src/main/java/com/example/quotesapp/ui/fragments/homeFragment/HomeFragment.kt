@@ -93,21 +93,21 @@ class HomeFragment : Fragment() {
 
     private fun getCategoryImage(categoryName: String): Int {
         return when (categoryName) {
-            "Motivational Quotes" -> R.drawable.wallpaper
-            "Inspirational Quotes" -> R.drawable.splash_image_quotes
-            "Love Quotes" -> R.drawable.splash_image_two
-            "Friendship Quotes" -> R.drawable.wallpaper
-            "Success Quotes" -> R.drawable.splash_image_quotes
-            "Life Quotes" -> R.drawable.splash_image_two
-            "Happiness Quotes" -> R.drawable.wallpaper
-            "Leadership Quotes" -> R.drawable.splash_image_quotes
-            "Wisdom Quotes" -> R.drawable.splash_image_two
-            "Positive Thinking Quotes" -> R.drawable.wallpaper
-            "Courage Quotes" -> R.drawable.splash_image_quotes
-            "Family Quotes" -> R.drawable.splash_image_two
-            "Self Love Quotes" -> R.drawable.wallpaper
-            "Time Management Quotes" -> R.drawable.splash_image_quotes
-            "Gratitude Quotes" -> R.drawable.splash_image_two
+            "Motivational Quotes" -> R.drawable.artboard_11
+            "Inspirational Quotes" -> R.drawable.artboard_7
+            "Love Quotes" -> R.drawable.artboard_10
+            "Friendship Quotes" -> R.drawable.artboard_3
+            "Success Quotes" -> R.drawable.artboard_14
+            "Life Quotes" -> R.drawable.artboard_9
+            "Happiness Quotes" -> R.drawable.artboard_5
+            "Leadership Quotes" -> R.drawable.artboard_8
+            "Wisdom Quotes" -> R.drawable.artboard_16
+            "Positive Thinking Quotes" -> R.drawable.artboard_12
+            "Courage Quotes" -> R.drawable.artboard_1
+            "Family Quotes" -> R.drawable.artboard_2
+            "Self Love Quotes" -> R.drawable.artboard_13
+            "Time Management Quotes" -> R.drawable.artboard_15
+            "Gratitude Quotes" -> R.drawable.artboard_4
             else -> R.drawable.wallpaper
         }
     }

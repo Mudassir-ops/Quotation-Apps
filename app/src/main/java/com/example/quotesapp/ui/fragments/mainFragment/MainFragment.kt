@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.quotesapp.R
 import com.example.quotesapp.databinding.FragmentMainBinding
@@ -25,7 +27,22 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMainBinding.inflate(inflater,container,false)
+        binding?.bottomNav?.let {
+            ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
+                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                v.setPadding(0, 0, 0, systemBars.bottom)
+                insets
+            }
+        }
+
+        binding?.bottomNav?.apply {
+            setPadding(0, 0, 0, -8)
+            elevation = 0f
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+        }
         replaceFragment(HomeFragment())
+
+        binding?.bottomNav?.setPadding(0, 0, 0, 0)
 
         binding?.bottomNav?.setOnItemSelectedListener {
             val fragment = when (it.itemId) {
