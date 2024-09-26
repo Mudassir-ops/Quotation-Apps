@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">QuotesApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Daily Quotes Motivation</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="inspiration">Inspiration</string>
     <string name="success_is">Success is not final, failure is not total. It is the courage to continue that counts.</string>
