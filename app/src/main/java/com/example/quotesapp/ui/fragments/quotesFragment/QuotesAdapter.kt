@@ -100,7 +100,7 @@ class QuotesAdapter(
         textToSpeech = null
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+    /*@SuppressLint("NotifyDataSetChanged")
     private fun saveQuoteToDatabase(quote: Quotes, holder: ViewHolder) {
         CoroutineScope(Dispatchers.IO).launch {
             val quoteEntity = QuotesEntity(
@@ -122,5 +122,34 @@ class QuotesAdapter(
 
 
         }
+    }*/
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun saveQuoteToDatabase(quote: Quotes, holder: ViewHolder) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val isFavorite = quotesDao.isFavorite(quote.text ?: return@launch, quote.author ?: return@launch)
+
+            if (isFavorite) {
+                // If the quote is already a favorite, delete it
+                quotesDao.deleteQuoteByText(quote.text ?: return@launch)
+            } else {
+                // Otherwise, save it as a favorite
+                val quoteEntity = QuotesEntity(
+                    quotesText = quote.text ?: return@launch,
+                    authorName = quote.author ?: return@launch,
+                    isFavourite = true
+                )
+                quotesDao.insertQuotesData(quoteEntity)
+            }
+
+            CoroutineScope(Dispatchers.Main).launch {
+                // Update the icon based on whether it's a favorite or not
+                holder.binding.icFavourite.setImageResource(
+                    if (isFavorite) R.drawable.ic_favourite else R.drawable.ic_red_fav
+                )
+                notifyDataSetChanged() // Refresh the adapter
+            }
+        }
     }
+
 }
