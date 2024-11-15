@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -87,13 +88,20 @@ class MainFragment : Fragment() {
     }
 
     private fun showExitDialog() {
-        AlertDialog.Builder(requireContext())
+        val dialog = AlertDialog.Builder(requireContext())
             .setTitle("Exit")
             .setMessage("Are you sure you want to exit?")
             .setPositiveButton("Yes") { _, _ -> requireActivity().finish() }
             .setNegativeButton("No", null)
             .show()
+
+        // Change text color of the "Yes" button
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE)?.setTextColor(ContextCompat.getColor(requireContext(), R.color.bottom_nav_item_color))
+
+        // Change text color of the "No" button
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE)?.setTextColor(ContextCompat.getColor(requireContext(), R.color.bottom_nav_item_color))
     }
+
 
 
 }

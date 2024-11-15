@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quotesapp.R
 import com.example.quotesapp.databinding.FragmentHomeBinding
 import com.example.quotesapp.ui.json.Categories
+import com.example.quotesapp.ui.utils.KEY_CATEGORY_NAME
 import com.example.quotesapp.ui.utils.KEY_IMAGE_RESOURCE
 import com.example.quotesapp.ui.utils.KEY_QUOTES
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,12 +33,14 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         homeAdapter = HomeAdapter(arrayListOf(),
-            callback = {quotesList, imageResource ->
+            callback = {quotesList, imageResource,categoryName ->
 
                 if (findNavController().currentDestination?.id == R.id.mainFragment) {
                     val bundle = Bundle()
                     bundle.putParcelableArrayList(KEY_QUOTES, quotesList)
                     bundle.putInt(KEY_IMAGE_RESOURCE,imageResource)
+                    bundle.putString(KEY_CATEGORY_NAME, categoryName)
+                    Log.e("quotes", "onCreate: send quotesList $quotesList", )
 
                     findNavController().navigate(R.id.quotesFragment, bundle)
                 }

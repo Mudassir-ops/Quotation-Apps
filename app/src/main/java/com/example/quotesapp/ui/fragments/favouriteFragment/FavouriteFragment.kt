@@ -39,20 +39,6 @@ class FavouriteFragment : Fragment() {
         binding?.favRecyclerView?.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    /*private fun observeFavouriteQuotes() {
-        viewModel.favouriteQuotes.observe(viewLifecycleOwner) { favList ->
-            if (favList.isNullOrEmpty()) {
-                binding?.txtFavourite?.visibility = View.VISIBLE
-                binding?.favRecyclerView?.visibility = View.GONE
-            } else {
-                binding?.txtFavourite?.visibility = View.GONE
-                binding?.favRecyclerView?.visibility = View.VISIBLE
-
-                val adapter = FavouriteAdapter(favList)
-                binding?.favRecyclerView?.adapter = adapter
-            }
-        }
-    }*/
 
     private fun observeFavouriteQuotes() {
         viewModel.favouriteQuotes.observe(viewLifecycleOwner) { favList ->
@@ -66,7 +52,7 @@ class FavouriteFragment : Fragment() {
                 // Reverse the list here
                 val reversedList = favList.reversed()
 
-                val adapter = FavouriteAdapter(reversedList)
+                val adapter = FavouriteAdapter(reversedList,context?:return@observe)
                 binding?.favRecyclerView?.adapter = adapter
             }
         }

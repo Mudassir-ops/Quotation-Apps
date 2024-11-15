@@ -10,7 +10,7 @@ import com.example.quotesapp.ui.json.Quotes
 
 class HomeAdapter(
     private var quotes: ArrayList<Categories>,
-    private val callback: (ArrayList<Quotes>, Int) -> Unit
+    private val callback: (ArrayList<Quotes>, Int,String) -> Unit
 ) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
@@ -33,7 +33,7 @@ class HomeAdapter(
         holder.binding.roundedImageView.setImageResource(dataModel.imageResource)
 
         holder.itemView.setOnClickListener {
-            dataModel.quotes?.let { it1 -> callback.invoke(it1, dataModel.imageResource) }
+            dataModel.quotes?.let { it1 -> callback.invoke(it1, dataModel.imageResource,dataModel.categoryName.toString()) }
         }
 
 

@@ -10,7 +10,7 @@
         android:id="@+id/quotesImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.3"
+        android:alpha="0.7"
         android:scaleType="fitXY" />
 
     <View
@@ -50,6 +50,7 @@
         android:id="@+id/quotesDetailRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scrollbars="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

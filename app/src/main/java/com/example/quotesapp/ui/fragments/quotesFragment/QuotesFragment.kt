@@ -1,6 +1,7 @@
 package com.example.quotesapp.ui.fragments.quotesFragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quotesapp.data.QuotesDao
 import com.example.quotesapp.databinding.FragmentQuotesBinding
 import com.example.quotesapp.ui.json.Quotes
+import com.example.quotesapp.ui.utils.KEY_CATEGORY_NAME
 import com.example.quotesapp.ui.utils.KEY_IMAGE_RESOURCE
 import com.example.quotesapp.ui.utils.KEY_QUOTES
 import com.example.quotesapp.ui.utils.parcelableArrayList
@@ -31,6 +33,7 @@ class QuotesFragment : Fragment() {
         quotesAdapter = quotesList?.let {
             QuotesAdapter(quotes = it,quotesDao = quotesDao,context?:return)
         }
+        Log.e("quotes", "onCreate: get quotes List $quotesList", )
     }
 
     override fun onCreateView(
@@ -44,6 +47,10 @@ class QuotesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val imageResource = arguments?.getInt(KEY_IMAGE_RESOURCE)
+        val categoryName = arguments?.getString(KEY_CATEGORY_NAME)
+        binding?.txtQuotesName?.text = categoryName
+
+
         imageResource?.let {
             binding?.quotesImageView?.setImageResource(it)
         }

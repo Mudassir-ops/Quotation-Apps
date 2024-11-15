@@ -22,7 +22,7 @@ fun Activity.toast(message: String) {
     }
 }
 
-fun Activity.shareApp(){
+fun Activity.shareThisApp(){
     try {
         val sendIntent = Intent(Intent.ACTION_SEND)
         sendIntent.type = "text/plain"

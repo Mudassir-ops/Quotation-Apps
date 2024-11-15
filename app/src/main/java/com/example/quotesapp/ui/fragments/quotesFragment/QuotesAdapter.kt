@@ -130,7 +130,6 @@ class QuotesAdapter(
             val isFavorite = quotesDao.isFavorite(quote.text ?: return@launch, quote.author ?: return@launch)
 
             if (isFavorite) {
-                // If the quote is already a favorite, delete it
                 quotesDao.deleteQuoteByText(quote.text ?: return@launch)
             } else {
                 // Otherwise, save it as a favorite

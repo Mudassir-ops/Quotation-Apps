@@ -39,7 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="@id/topView"
         android:textSize="@dimen/_16sdp"
-        android:text="@string/setting"/>
+        android:text="@string/more_options"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/icPrivacyPolicy"
@@ -120,5 +120,44 @@
         android:gravity="center_vertical"
         android:drawablePadding="@dimen/_10sdp"
         app:layout_constraintWidth_percent="0.85"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/icFeedback"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/icMoreApps"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_rounded"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:drawableStart="@drawable/ic_feedback"
+        android:text="@string/feedback"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="0dp"
+        android:textColor="@android:color/holo_blue_dark"
+        app:drawableTint="@android:color/holo_blue_dark"
+        android:textSize="@dimen/_15sdp"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/_10sdp"
+        app:layout_constraintWidth_percent="0.85"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtVersion"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/icFeedback"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_rounded"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/version_1_1"
+        android:paddingEnd="0dp"
+        android:textColor="@android:color/holo_blue_dark"
+        app:drawableTint="@android:color/holo_blue_dark"
+        android:textSize="@dimen/_15sdp"
+        android:gravity="center"
+        app:layout_constraintWidth_percent="0.85"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

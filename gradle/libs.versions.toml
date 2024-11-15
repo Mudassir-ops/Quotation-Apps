@@ -18,6 +18,10 @@ glide_version = "4.16.0"
 gson_version = "2.10"
 lottie_animation = "6.5.2"
 room_version = "2.5.2"
+firebaseCrashlytics = "19.2.1"
+googleGmsGoogleServices = "4.4.2"
+googleFirebaseCrashlytics = "3.0.2"
+firebaseAnalytics = "22.1.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,11 +46,14 @@ lottie_animation ={group = "com.airbnb.android", name="lottie",version.ref = "lo
 room_runtime = {group = "androidx.room",name= "room-runtime",version.ref = "room_version"}
 room_compiler = {group = "androidx.room",name = "room-compiler",version.ref = "room_version"}
 room_ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room_version" }
-
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebaseCrashlytics" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
 
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 dagger-hilt-plugins = { id = "com.google.dagger.hilt.android",version.ref = "dagger_Hilt_Version"}
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
+google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "googleFirebaseCrashlytics" }
 

@@ -18,3 +18,4 @@ inline fun <reified T : Parcelable> Intent.parcelableArrayList(key: String): Arr
 
 const val KEY_QUOTES = "KEY_QUOTES"
 const val KEY_IMAGE_RESOURCE = "KEY_IMAGE_RESOURCE"
+const val KEY_CATEGORY_NAME = "KEY_CATEGORY_NAME"

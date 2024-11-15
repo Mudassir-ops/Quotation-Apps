@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "909544253343",
+    "firebase_url": "https://webview-2d2c7-default-rtdb.firebaseio.com",
+    "project_id": "webview-2d2c7",
+    "storage_bucket": "webview-2d2c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909544253343:android:4fbd6927692de90a8d7faa",
+        "android_client_info": {
+          "package_name": "com.etech.motivation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy_nURG19qrzEgLiBX9F5Nwmdt-zNTnQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909544253343:android:e1697acdb610dd1e8d7faa",
+        "android_client_info": {
+          "package_name": "com.example.webviewapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy_nURG19qrzEgLiBX9F5Nwmdt-zNTnQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

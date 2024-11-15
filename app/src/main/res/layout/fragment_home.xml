@@ -62,6 +62,7 @@
         android:id="@+id/quotesRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scrollbars="vertical"
         android:layout_marginHorizontal="@dimen/_5sdp"
         app:layout_constraintTop_toBottomOf="@id/horizontalRecyclerview"
         app:layout_constraintStart_toStartOf="parent"
